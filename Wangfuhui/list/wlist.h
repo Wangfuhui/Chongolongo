@@ -3,21 +3,27 @@
 class wlist {
 public:
    wlist()
-   :m_top(nullptr), 
-   m_front(nullptr),
-   m_size(0) 
-   {};   
+      :m_front(nullptr),
+      m_size(0) 
+      {};
+   wlist(const wlist& other); //copy ctor
+   wlist(wlist&& other); // move ctor
+
+   wlist& operator = (const wlist& other); //copy assign
+   wlist& operator = (wlist&& other); // move assign
    ~wlist();
    void push_front(int data);
    void pop_front();
-   wlist_iterator begin();
-   wlist_iterator end();
+   int front();
+   wlist_iterator begin() const; 
+   wlist_iterator end() const;
    bool remove(int);
    Node* find(int data);
-   void insertAfter(Node* node, int data);
+   void insertAfter(wlist_iterator it, int data);
+   void removeAfter(wlist_iterator it);
    void print();
 private:
-   Node* m_top;
+   //Node* m_top;
    Node* m_front;
    unsigned int m_size;
 };
