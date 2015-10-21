@@ -9,16 +9,17 @@ struct Node {
 class list {
 public:
     list();
+    list(const list& lst);
     ~list();
-    //operator=()
+//    operator=();
     
     //iterators
-    Node* begin();
-    Node* end();
+    Node* begin() const;
+    //Node* end();
 
     //Capacity
-    bool empty();
-    int size();
+    bool empty() const;
+    int size() const;
 
     //Modifiers
     void push_front(int val);
@@ -26,11 +27,11 @@ public:
 
     //Element access
     int front();
-    int back();
+    //int back();
 
 private:
     Node* m_front;
-    Node* m_back;
+    //Node* m_back;
     int m_size;
 };
 #endif //!LFORWARDLIST

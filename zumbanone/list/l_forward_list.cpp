@@ -6,10 +6,32 @@ list::list()
 {
     m_size = 0;
 
-    m_back = new Node;
-    m_back->ptr = NULL;
-    m_front = m_back;
+    m_front = new Node;
+    m_front = NULL;
+    //m_front->ptr = NULL;
 }
+
+list::list(const list& lst)
+    :m_front(NULL)
+{
+    m_size = lst.size();
+    Node* it = lst.begin(); //iterator
+    Node* curr = new Node;
+    curr = NULL;
+    while( it != NULL) {
+	Node* nd = new Node;
+	nd->val = it->val;
+	if(m_front == NULL) {
+	    m_front = nd;
+	    curr = m_front;
+	} else {
+	    curr->ptr = nd;
+	    curr = nd;
+	}
+	it = it->ptr;
+    }
+}
+
 list::~list() 
 {
     while(m_size>0) {
@@ -17,27 +39,25 @@ list::~list()
     }
 
 }
-//operator=()
+//list::operator=()
+//{
+//}
 
 //iterators
-Node* list::begin() 
+Node* list::begin() const
 {
     return m_front;
 }
 
-Node* list::end()
-{
-    return m_back;
-}
 
 //Capacity
-bool list::empty()
+bool list::empty() const
 {
     if(m_size == 0)
 	return true;
     return false;
 }
-int list::size()
+int list::size() const
 {
     return m_size;
 }
@@ -50,8 +70,6 @@ void list::push_front(int val)
     node->ptr = m_front;
     m_front = node;
 
-    if(m_size == 0)
-	m_back = node;
     m_size++;
 }
 
@@ -68,9 +86,4 @@ void list::pop_front()
 int list::front()
 {
     return m_front->val;
-}
-
-int list::back()
-{
-    return m_back->val;
 }
