@@ -1,0 +1,6 @@
+//////////////////Quetions during implementation////////////////
+1. return by reference: when we need it. when we cant use it?
+2. When to inherit costume iterator from std and whe use your own?
+3. Const iterator code duplication?
+4. Read about ([], *, -> ()) overloading.
+
