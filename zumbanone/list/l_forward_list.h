@@ -9,9 +9,16 @@ struct Node {
 class list {
 public:
     list();
-    list(const list& lst);
+    list(const list& lst); // copy ctor
+    list& operator=(const list& lst); //copy assignment
+
+    list(list&& lst); // move ctor
+    list& operator=(list&& lst); // move ctor
+
+
     ~list();
-//    operator=();
+
+
     
     //iterators
     Node* begin() const;
@@ -30,6 +37,8 @@ public:
     //int back();
 
 private:
+    void copy(const list& lst); //helper function for copying the list content
+
     Node* m_front;
     //Node* m_back;
     int m_size;

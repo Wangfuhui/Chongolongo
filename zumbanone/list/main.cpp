@@ -7,12 +7,21 @@ void printList(const list& l)
 {
     Node* b = l.begin();
 
-    std::cout << l.size();
-
     while(b != NULL) {
 	std::cout << b->val << " , ";
 	b = b->ptr;
     }
+    std::cout << std::endl;
+}
+
+list testMoveCtor(const list& lst)
+{
+    list l(lst);
+    l.push_front(19);
+    l.push_front(29);
+    l.push_front(39);
+    l.push_front(48);
+    return l;
 }
 
 
@@ -43,9 +52,16 @@ int main()
     list l2(l);
     l.pop_front();
     printList(l2);
+
     std::cout << std::endl;
-  //  l2.pop_front();
-   // std::cout << l2.size();
+
+    list l3 = l;
+    printList(l3);
+    std::cout << std::endl;
+
+    list l4;
+    l4 = testMoveCtor(l4);
+    printList(l4);
     
     return 0;
 }
